@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { UiModule } from './ui/ui.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 
 
@@ -16,6 +18,7 @@ import { UiModule } from './ui/ui.module';
 @NgModule({
   declarations: [
     AppComponent,
+
 
 
 
@@ -30,7 +33,8 @@ import { UiModule } from './ui/ui.module';
     BrowserAnimationsModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
