@@ -1,0 +1,42 @@
+import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ToastrServiceCustom {
+
+  constructor(private toastr:ToastrService) { 
+  }
+
+  message(message:string,title:string,toastrOptions:Partial<ToastrOptions>){
+    this.toastr[toastrOptions.messageType](message,title,{
+      positionClass:toastrOptions.position
+    })
+  }
+
+}
+
+export class ToastrOptions{
+  messageType:MessageTypeToastr;
+  position:PositionType
+}
+
+export enum MessageTypeToastr{
+  Success="success",
+  Info="info",
+  Warning="warning",
+  Error="error"
+}
+
+
+export enum PositionType{
+  BottomRight="toast-bottom-right",
+  TopRight="toast-top-right",
+  TopCenter="toast-top-center",
+  TopLeft="toast-top-left",
+  BottomCenter="toast-bottom-center",
+  BottomLeft="toast-bottom-left",
+  TopFullWidth="toast-top-full-width",
+  BottomFullWidth="toast-bottom-full-width"
+}

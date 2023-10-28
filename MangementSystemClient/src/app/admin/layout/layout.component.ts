@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs';
-import { AlertifyService, MessagePosition, MessageType } from 'src/app/services/ui/alertify.service';
+import { AlertifyService, MessagePosition, MessageType } from 'src/app/services/adminservices/alertify.service';
 
 
 @Component({
@@ -11,13 +11,13 @@ import { AlertifyService, MessagePosition, MessageType } from 'src/app/services/
 export class LayoutComponent implements OnInit{
 sideBarOpen=true;
 
-constructor(private alertify:AlertifyService){}//
+constructor(){}//private alertify:AlertifyService
   ngOnInit(){
-     this.alertify.message("Test",{
-      messageType:MessageType.Error,
-      delay:15,
-      position:MessagePosition.TopRight
-     })
+    //  this.alertify.message("Test",{
+    //   messageType:MessageType.Error,
+    //   delay:15,
+    //   position:MessagePosition.TopRight
+    //  })
     //25 saniye boyunca ve birden cok msj yollamaya izin verecek sekilde ayarlandi.true yaparsak yalnizca tek bir msj yollariz.
    }
 

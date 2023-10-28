@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { dashboardService } from '../../../services/admin/dashboardService';
+import { dashboardService } from '../../../services/adminservices/dashboardService';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 

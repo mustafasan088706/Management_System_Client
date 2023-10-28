@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { MessageTypeToastr, PositionType, ToastrOptions, ToastrServiceCustom } from 'src/app/services/uiservices/toastr.service.custom';
 
 
 @Component({
@@ -9,7 +9,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomeComponent {
 
-
+  // private toastr:ToastrServiceCustom
+  constructor(){
+    // toastr.message("Test","Test",{
+    //   messageType:MessageTypeToastr.Warning,
+    //   position:PositionType.BottomRight
+    // })
   }
 
-
+}

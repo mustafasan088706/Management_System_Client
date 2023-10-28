@@ -10,7 +10,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { CardComponent } from './card/card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { PiegraphComponent } from './piegraph/piegraph.component';
-import { dashboardService } from '../../services/admin/dashboardService';
+import { dashboardService } from '../../services/adminservices/dashboardService';
 
 
 @NgModule({
