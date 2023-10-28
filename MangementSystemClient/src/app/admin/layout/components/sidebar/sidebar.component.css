@@ -1,0 +1,20 @@
+.profile-card{
+    text-align: center;
+    padding: 10px;
+
+}
+
+
+img{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+ p{
+    font-size: 14px;
+}
+
+
+
