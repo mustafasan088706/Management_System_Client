@@ -12,5 +12,5 @@ export class Products {
           productCode:string;
           productImage:string;
           weight :number;
-          expiryDate:Date;
+          expiryDate:Date | string;
 }

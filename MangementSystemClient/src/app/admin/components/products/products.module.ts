@@ -12,7 +12,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {MatSliderModule} from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatNativeDateModule,
     MatRadioModule,
     FormsModule,
-    ReactiveFormsModule
+    MatSliderModule,
+    MatCardModule,
+    MatCheckboxModule
+    
   ]
 })
 export class ProductsModule { }

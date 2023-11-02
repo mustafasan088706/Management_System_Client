@@ -15,20 +15,37 @@ import { ProductService } from 'src/app/services/common/models/product.service';
 })
 
 
+
+
 export class CreateComponent extends BaseComponent implements OnInit {
 
   // estuaryShower = [true, false];
-
+  disabled = false;
+  max = 100;
+  min = 0;
+  showTicks = false;
+  step = 1;
+  thumbLabel = false;
+  value = 0;
+  
   constructor(spinner:NgxSpinnerService,private productService: ProductService,private alertify:AlertifyService) {super(spinner) }
 
   ngOnInit(): void {
 
   }
 
-  create(productname: HTMLInputElement, productcode: HTMLInputElement, materialname: HTMLInputElement, materialcode: HTMLInputElement, conductance: HTMLInputElement, weight: HTMLInputElement, carbondioxide: HTMLInputElement, nitrogen: HTMLInputElement, lotnumber: HTMLInputElement,productimage:HTMLInputElement,notes:HTMLInputElement,expirydate:HTMLInputElement) {
+  parseDate(expiryDate: string): Date {
+    if (expiryDate) {
+        return new Date(expiryDate);
+    }
+    return null;
+}
+
+  create(productname: HTMLInputElement, productcode: HTMLInputElement, materialname: HTMLInputElement, materialcode: HTMLInputElement, conductance: HTMLInputElement, weight: HTMLInputElement, carbondioxide: HTMLInputElement, nitrogen: HTMLInputElement, lotnumber: HTMLInputElement,productimage:HTMLInputElement,notes:HTMLInputElement) {
 
     this.showSpinner(SpinnerType.BallClipRotate);
       const product:Products=new Products();
+ 
       product.productName=productname.value;
       product.productCode=productcode.value;
       product.materialName=materialname.value;
@@ -40,7 +57,128 @@ export class CreateComponent extends BaseComponent implements OnInit {
       product.lotNumber=parseInt(lotnumber.value);
       product.productImage=productimage.value;
       product.notes=notes.value;
-      expirydate.value;
+      // product.expiryDate=expirydate.value;
+      //expirydate:HTMLInputElement
+
+      if(!productname.value){
+        this.alertify.message("Please enter a product name!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+
+      if(!productcode.value){
+        this.alertify.message("Please enter a product code!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+      if(!materialname.value){
+        this.alertify.message("Please enter a material name!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+
+      if(!conductance.value){
+        this.alertify.message("Please enter a conductance value!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+      // if(parseInt(conductance.value)<=770 ||  parseInt(conductance.value)>=1080){
+      //   this.alertify.message("Your entered conductance value must be between '800' and '1080'",{
+      //     dissmissOther:true,
+      //     messageType:MessageType.Error,
+      //     position:MessagePosition.TopRight
+      //   })
+      // }
+
+
+      
+      if(!weight.value){
+        this.alertify.message("Please enter a weight value!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+      // if(parseInt(weight.value)<=1521 ||  parseInt(weight.value)>=1580){
+      //   this.alertify.message("Your entered weight value must be between '1521' and '1580'",{
+      //     dissmissOther:true,
+      //     messageType:MessageType.Error,
+      //     position:MessagePosition.TopRight
+      //   })
+      // }
+
+
+
+
+      if(!materialcode.value){
+        this.alertify.message("Please enter a material code!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+
+      if(!carbondioxide.value){
+        this.alertify.message("Please enter a carbondioxide value!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+
+
+      if(!nitrogen.value){
+        this.alertify.message("Please enter a nitrogen value!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+
+      if(!lotnumber.value){
+        this.alertify.message("Please enter a Lot Number value!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+
+
+      if(!productimage.value){
+        this.alertify.message("Please enter a product image!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+      
+      if(!notes.value){
+        this.alertify.message("Please enter a note!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+
 
       this.productService.create(product,()=>{
         this.hideSpinner(SpinnerType.BallClipRotate);
@@ -50,6 +188,12 @@ export class CreateComponent extends BaseComponent implements OnInit {
           position:MessagePosition.TopRight,
         })
        
+      },errorMessage=>{
+        this.alertify.message(errorMessage,{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
       });
   }
 }
