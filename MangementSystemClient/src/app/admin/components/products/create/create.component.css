@@ -1,0 +1,27 @@
+.text{
+    color: aliceblue;
+}
+
+mat-form-field{
+    width: 600px;
+    margin-left: 70px;
+
+}
+
+.example-radio-group{
+display: flex;
+flex-direction:row;
+margin: 1px 10px;
+
+}
+
+
+.example-radio-button{
+margin: 5px;
+margin-left: 60px;
+}
+
+label{
+    margin-left: 70px;
+}
+

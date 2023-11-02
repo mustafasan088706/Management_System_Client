@@ -9,6 +9,7 @@ import{MatDividerModule} from'@angular/material/divider';
 
 
 
+
 @NgModule({
   declarations: [
     EndOfProductionComponent,
@@ -20,6 +21,7 @@ import{MatDividerModule} from'@angular/material/divider';
     ProductsModule,
     DashboardModule,
     MatDividerModule,
+  
 
   ]
 })

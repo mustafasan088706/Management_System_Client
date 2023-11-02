@@ -1,0 +1,108 @@
+<h1 mat-dialog-titel style="margin-left: 70px;font-weight: bold;">Add Product</h1>
+
+<div mat-dialog-content>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product Name</mat-label>
+      <input matInput placeholder="Name" class="text" #txtProductName>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product Code</mat-label>
+      <input  matInput placeholder="Code" #txtProductCode>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Material Name</mat-label>
+      <input  matInput placeholder="Material Name"  #txtMaterialName>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Material Code</mat-label>
+      <input  matInput placeholder="Material Code"  #txtMaterialCode>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Conductance</mat-label>
+      <input type="number"  matInput placeholder="Conductance"  #txtConductance min="770" max="1080">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Estuary Shower</mat-label>
+      <mat-select placeholder="Estuary">
+        <mat-option value="True">0</mat-option>
+        <mat-option value="False">1</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field> -->
+
+    <!-- <label for="">
+      <h1>Estuary Shower</h1>
+    </label>
+    <mat-radio-group  class="example-radio-group">
+      <mat-radio-button class="example-radio-button" *ngFor="let estuary of estuaryShower"
+        [value]="estuary"  >{{estuary}}</mat-radio-button>
+    </mat-radio-group> -->
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Weight</mat-label>
+      <input type="number" matInput placeholder="Weight"  #txtWeight>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Carbondioxide</mat-label>
+      <input type="number"  matInput placeholder="Carbondioxide"  #txtCarbondioxide>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nitrogen</mat-label>
+      <input  matInput placeholder="Nitrogen"  #txtNitrogen>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Lot Number</mat-label>
+      <input type="number" matInput placeholder="Lot Number"  #txtLotNumber>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product Image</mat-label>
+      <input matInput placeholder="Image"  #txtProductImage>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Expiry Date</mat-label>
+      <input matInput [matDatepicker]="picker"  #txtExpiryDate>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Notes</mat-label>
+      <input  matInput  #txtNotes>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+
+</div>
+
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button style="margin-left:10px" mat-raised-button color="primary" (click)="create(txtProductName,txtProductCode,txtMaterialName,txtMaterialCode,txtConductance,txtWeight,txtCarbondioxide,txtNitrogen,txtLotNumber,txtProductImage,txtNotes,txtExpiryDate)">Save</button>
+</div>

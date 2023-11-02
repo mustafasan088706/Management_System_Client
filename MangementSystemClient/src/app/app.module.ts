@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { UiModule } from './ui/ui.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -19,10 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-
-
-
-
 
   ],
   imports: [
@@ -36,11 +33,14 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+
+
   ],
   providers: [
-    
-    {provide:"baseUrl",useValue:"https://localhost:7289/api",multi:true}],//Base url uygulamada istek yaparken surekli sabit kalan degismeyen url oldugunda bunu sabit bir yerde tanimlayarak kullanmak performans acisindan onemlidir.
+
+    { provide: "baseUrl", useValue: "https://localhost:7289/api", multi: true }],//Base url uygulamada istek yaparken surekli sabit kalan degismeyen url oldugunda bunu sabit bir yerde tanimlayarak kullanmak performans acisindan onemlidir.
   bootstrap: [AppComponent]
 
 })
