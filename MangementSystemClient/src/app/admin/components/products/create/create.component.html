@@ -30,15 +30,82 @@
     </mat-form-field>
 
     <!-- <mat-form-field appearance="outline">
-      <mat-label>Conductance</mat-label>
-      <input type="number"  matInput placeholder="Conductance"  #txtConductance min="770" max="1080">
+      <mat-label>Conductance Maximum</mat-label>
+      <input type="number"  matInput placeholder="Conductance Max."  #txtConductanceMax>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Conductance Minimum</mat-label>
+      <input type="number"  matInput placeholder="Conductance Min."  #txtConductanceMin>
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field> -->
 
+<br>
+    <mat-card>
+      <mat-card-content>
+        <h2 class="example-h2">Minimum Conductance Settings</h2>
+    
+        <section class="example-section">
+          <mat-form-field class="example-margin example-width">
+            <mat-label>Value</mat-label>
+            <input matInput type="number" [(ngModel)]="value2">
+          </mat-form-field>
+          <mat-form-field class="example-margin example-width">
+            <mat-label>Min value</mat-label>
+            <input matInput type="number" [(ngModel)]="min2">
+          </mat-form-field>
+          <mat-form-field class="example-margin example-width">
+            <mat-label>Max value</mat-label>
+            <input matInput type="number" [(ngModel)]="max2">
+          </mat-form-field>
+          <mat-form-field class="example-margin example-width">
+            <mat-label>Step size</mat-label>
+            <input matInput type="number" [(ngModel)]="step2">
+          </mat-form-field>
+        </section>
+    
+        <section class="example-section">
+          <mat-checkbox [(ngModel)]="showTicks2">Show ticks</mat-checkbox>
+        </section>
+    
+        <section class="example-section">
+          <mat-checkbox [(ngModel)]="thumbLabel2">Show thumb label</mat-checkbox>
+        </section>
+    
+        <section class="example-section">
+          <mat-checkbox [(ngModel)]="disabled2">Disabled</mat-checkbox>
+        </section>
+      </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="example-result-card">
+      <mat-card-content>
+        <h2>Result</h2>
+    
+        <div class="example-label-container">
+          <label id="example-name-label" class="example-name-label">Value</label>
+          <label class="example-value-label">{{txtConductanceMin.value}}</label>
+        </div>
+        <mat-slider
+            class="example-margin"
+            [disabled]="disabled2"
+            [max]="max2"
+            [min]="min2"
+            [step]="step2"
+            [discrete]="thumbLabel2"
+            [showTickMarks]="showTicks2">
+          <input matSliderThumb [(ngModel)]="value2" #txtConductanceMin>
+        </mat-slider>
+      </mat-card-content>
+    </mat-card>
+
+<br>
 
     <mat-card>
       <mat-card-content>
-        <h2 class="example-h2">Slider configuration</h2>
+        <h2 class="example-h2">Maximum Conductance Settings</h2>
     
         <section class="example-section">
           <mat-form-field class="example-margin example-width">
@@ -79,7 +146,7 @@
     
         <div class="example-label-container">
           <label id="example-name-label" class="example-name-label">Value</label>
-          <label class="example-value-label">{{txtConductance.value}}</label>
+          <label class="example-value-label">{{txtConductanceMax.value}}</label>
         </div>
         <mat-slider
             class="example-margin"
@@ -89,10 +156,15 @@
             [step]="step"
             [discrete]="thumbLabel"
             [showTickMarks]="showTicks">
-          <input matSliderThumb [(ngModel)]="value" #txtConductance>
+          <input matSliderThumb [(ngModel)]="value" #txtConductanceMax>
         </mat-slider>
       </mat-card-content>
     </mat-card>
+
+<br>
+
+
+
 
     <!-- <mat-form-field appearance="outline">
       <mat-label>Estuary Shower</mat-label>
@@ -163,7 +235,7 @@
 
 <div mat-dialog-action [align]="'end'">
   <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-  <button style="margin-left:10px" mat-raised-button color="primary" (click)="create(txtProductName,txtProductCode,txtMaterialName,txtMaterialCode,txtConductance,txtWeight,txtCarbondioxide,txtNitrogen,txtLotNumber,txtProductImage,txtNotes)">Save</button>
+  <button style="margin-left:10px" mat-raised-button color="primary" (click)="create(txtProductName,txtProductCode,txtMaterialName,txtMaterialCode,txtConductanceMax,txtConductanceMin,txtWeight,txtCarbondioxide,txtNitrogen,txtLotNumber,txtProductImage,txtNotes)">Save</button>
 
 
 </div>

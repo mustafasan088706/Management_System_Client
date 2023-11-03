@@ -2,8 +2,8 @@ export class Products {
 
           productName :string;
           carbonDioxide:number;
-          conductance :number;
-          estuaryShower:boolean;
+          conductanceMin :number;
+          conductanceMax :number;
           lotNumber :number;
           materialCode:string;
           materialName :string;
@@ -12,5 +12,5 @@ export class Products {
           productCode:string;
           productImage:string;
           weight :number;
-          expiryDate:Date | string;
+          
 }

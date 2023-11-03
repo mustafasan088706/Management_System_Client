@@ -35,6 +35,9 @@ label{
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
+   
   }
   
   .example-margin {
@@ -67,6 +70,6 @@ label{
   }
   
   .example-result-card .example-value-label {
-    font-weight: 600;
+    font-weight: 200;
   }
   

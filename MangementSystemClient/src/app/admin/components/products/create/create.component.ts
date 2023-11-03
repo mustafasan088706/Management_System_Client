@@ -27,7 +27,16 @@ export class CreateComponent extends BaseComponent implements OnInit {
   step = 1;
   thumbLabel = false;
   value = 0;
-  
+
+
+  disabled2 = false;
+  max2 = 100;
+  min2 = 0;
+  showTicks2 = false;
+  step2 = 1;
+  thumbLabel2 = false;
+  value2 = 0;
+
   constructor(spinner:NgxSpinnerService,private productService: ProductService,private alertify:AlertifyService) {super(spinner) }
 
   ngOnInit(): void {
@@ -41,7 +50,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
     return null;
 }
 
-  create(productname: HTMLInputElement, productcode: HTMLInputElement, materialname: HTMLInputElement, materialcode: HTMLInputElement, conductance: HTMLInputElement, weight: HTMLInputElement, carbondioxide: HTMLInputElement, nitrogen: HTMLInputElement, lotnumber: HTMLInputElement,productimage:HTMLInputElement,notes:HTMLInputElement) {
+  create(productname: HTMLInputElement, productcode: HTMLInputElement, materialname: HTMLInputElement, materialcode: HTMLInputElement, conductancemax: HTMLInputElement,conductancemin: HTMLInputElement, weight: HTMLInputElement, carbondioxide: HTMLInputElement, nitrogen: HTMLInputElement, lotnumber: HTMLInputElement,productimage:HTMLInputElement,notes:HTMLInputElement) {
 
     this.showSpinner(SpinnerType.BallClipRotate);
       const product:Products=new Products();
@@ -50,13 +59,15 @@ export class CreateComponent extends BaseComponent implements OnInit {
       product.productCode=productcode.value;
       product.materialName=materialname.value;
       product.materialCode=materialcode.value;
-      product.conductance=parseFloat(conductance.value);
+      product.conductanceMax=parseFloat(conductancemax.value);
+      product.conductanceMin=parseFloat(conductancemin.value);
       product.weight=parseFloat(weight.value);
       product.carbonDioxide=parseFloat(carbondioxide.value);
       product.nitrogen=nitrogen.value;
       product.lotNumber=parseInt(lotnumber.value);
       product.productImage=productimage.value;
       product.notes=notes.value;
+     
       // product.expiryDate=expirydate.value;
       //expirydate:HTMLInputElement
 
@@ -86,13 +97,22 @@ export class CreateComponent extends BaseComponent implements OnInit {
       }
 
 
-      if(!conductance.value){
-        this.alertify.message("Please enter a conductance value!",{
-          dissmissOther:true,
-          messageType:MessageType.Error,
-          position:MessagePosition.TopRight
-        })
-      }
+      // if(!conductancemax.value){
+      //   this.alertify.message("Please enter a conductance value!",{
+      //     dissmissOther:true,
+      //     messageType:MessageType.Error,
+      //     position:MessagePosition.TopRight
+      //   })
+      // }
+
+
+      // if(!conductancemin.value){
+      //   this.alertify.message("Please enter a conductance value!",{
+      //     dissmissOther:true,
+      //     messageType:MessageType.Error,
+      //     position:MessagePosition.TopRight
+      //   })
+      // }
 
       // if(parseInt(conductance.value)<=770 ||  parseInt(conductance.value)>=1080){
       //   this.alertify.message("Your entered conductance value must be between '800' and '1080'",{
@@ -169,6 +189,22 @@ export class CreateComponent extends BaseComponent implements OnInit {
         })
       }
 
+
+      if(!conductancemax.value){
+        this.alertify.message("Please enter a maximum Conductance value!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
+
+      if(!conductancemin.value){
+        this.alertify.message("Please enter a minimum Conductance value!",{
+          dissmissOther:true,
+          messageType:MessageType.Error,
+          position:MessagePosition.TopRight
+        })
+      }
       
       if(!notes.value){
         this.alertify.message("Please enter a note!",{
@@ -177,6 +213,9 @@ export class CreateComponent extends BaseComponent implements OnInit {
           position:MessagePosition.TopRight
         })
       }
+
+
+
 
 
 
