@@ -1,0 +1,77 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+  <div fxFlex="60">
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef> Product Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.productName}}</td>
+        </ng-container>
+        <!-- <img src="{{element.productname}}" -->
+        <!-- Position Column -->
+        <ng-container matColumnDef="productCode">
+          <th mat-header-cell *matHeaderCellDef> Product Code </th>
+          <td mat-cell *matCellDef="let element"> {{element.productCode}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="materialName">
+          <th mat-header-cell *matHeaderCellDef> Mat.Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.materialName}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="materialCode">
+          <th mat-header-cell *matHeaderCellDef> Mat.Code </th>
+          <td mat-cell *matCellDef="let element"> {{element.materialCode}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="conductanceMin">
+          <th mat-header-cell *matHeaderCellDef> Conductance Min. </th>
+          <td mat-cell *matCellDef="let element"> {{element.conductanceMin}} </td>
+        </ng-container>
+        <ng-container matColumnDef="conductanceMax">
+          <th mat-header-cell *matHeaderCellDef> Conductance Max. </th>
+          <td mat-cell *matCellDef="let element"> {{element.conductanceMax}} </td>
+        </ng-container>
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Weight </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+        <ng-container matColumnDef="carbonDioxide">
+          <th mat-header-cell *matHeaderCellDef> Carbondioxide </th>
+          <td mat-cell *matCellDef="let element"> {{element.carbonDioxide}} </td>
+        </ng-container>
+        <ng-container matColumnDef="nitrogen">
+          <th mat-header-cell *matHeaderCellDef> Nitrogen </th>
+          <td mat-cell *matCellDef="let element"> {{element.nitrogen}} </td>
+        </ng-container>
+        <ng-container matColumnDef="lotNumber">
+          <th mat-header-cell *matHeaderCellDef> Lot Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.lotNumber}} </td>
+        </ng-container>
+        <ng-container matColumnDef="createdDate">
+          <th mat-header-cell *matHeaderCellDef> Created Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+        </ng-container>
+        <ng-container matColumnDef="updatedDate">
+          <th mat-header-cell *matHeaderCellDef> Updated Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.updatedDate}} </td>
+        </ng-container>
+        <ng-container matColumnDef="notes">
+          <th mat-header-cell *matHeaderCellDef> Notes </th>
+          <td mat-cell *matCellDef="let element"> {{element.notes}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

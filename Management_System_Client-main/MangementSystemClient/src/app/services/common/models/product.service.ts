@@ -1,0 +1,49 @@
+
+import { Injectable } from '@angular/core';
+import { HttpclientService } from '../httpclient.service';
+import { Products } from 'src/Contracts/contracts';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ProductLists } from 'src/Contracts/product-lists';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductService {
+
+  constructor(private httpClient:HttpclientService) {
+
+    this.httpClient.get<Products[]>({
+      controller:"dummytest",
+      
+    }).subscribe(data=>console.log(data));
+   }
+
+
+  create(product:Products,successCallBack?:()=>void,errorCallBack?:(errorMessage:string)=>void){
+      this.httpClient.post({
+        controller:"dummytest"},product).subscribe(result=>{ successCallBack();},(errorResponse:HttpErrorResponse)=>{
+          const _error:Array<{key:string,value:Array<string>}>=errorResponse.error;
+          let message="";
+          _error.forEach((val,index)=>{
+            val.value.forEach((_val,_index)=>{
+              message+=`${_val}<br>`;
+            });
+          });
+          errorCallBack(message);
+        });
+   
+  }
+
+ async read(successCallBack?:()=>void,errorCallBack?:(errorMessage:string)=>void):Promise<ProductLists[]>{
+    const promiseData :Promise<ProductLists[]>= this.httpClient.get<ProductLists[]>({
+      controller:"dummytest"
+    }).toPromise();
+
+    promiseData.then(d=>successCallBack())
+    .catch((errorResponse:HttpErrorResponse)=>errorCallBack(errorResponse.message))
+
+    return await promiseData;
+  }
+
+
+}
