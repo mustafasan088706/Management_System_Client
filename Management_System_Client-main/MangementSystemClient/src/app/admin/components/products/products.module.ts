@@ -19,6 +19,8 @@ import { ListComponent } from './list/list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
     ProductsComponent,
     CreateComponent,
     ListComponent,
-    DeleteDirective
+    DeleteDirective,
+    DeleteDialogComponent
 
   ],
   imports: [
@@ -48,7 +51,8 @@ import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
     MatCardModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
     
   ]
 })

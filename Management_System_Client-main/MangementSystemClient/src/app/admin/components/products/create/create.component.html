@@ -234,7 +234,7 @@
 </div>
 
 <div mat-dialog-action [align]="'end'">
-  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button color="warn" mat-dialog-close (click)="close()">Close</button>
   <button style="margin-left:10px" mat-raised-button color="primary" (click)="create(txtProductName,txtProductCode,txtMaterialName,txtMaterialCode,txtConductanceMax,txtConductanceMin,txtWeight,txtCarbondioxide,txtNitrogen,txtLotNumber,txtProductImage,txtNotes)">Save</button>
 
 
