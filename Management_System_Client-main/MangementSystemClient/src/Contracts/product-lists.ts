@@ -1,5 +1,5 @@
 export class ProductLists {
-
+    id:string;
     productName: string;
     productCode: string;
     materialName: string;

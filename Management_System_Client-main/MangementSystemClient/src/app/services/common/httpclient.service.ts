@@ -35,7 +35,7 @@ export class HttpclientService {
 
     else
     //Eger id doluysa doluysa bunu kullan bossa bos gec dedik.
-      url = `${this.url(requestParameter)}${id ? `/${id}`:""}`;
+    url = `${this.url(requestParameter)}${id ? `/${id}` : ""}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`;
 
 //httpclientin donus tipini de parameter yaptik ki donecek sonucunda bir generic oldugunu bilecektir.Ve yukarida metodun basinada Observable donecegini belirttik.
       return this.httpClient.get<T>(url,{headers:requestParameter.headers})
@@ -48,7 +48,7 @@ export class HttpclientService {
     url = requestParameter.fullEndPoint;
   else
 
-    url = `${this.url(requestParameter)}`;
+  url = `${this.url(requestParameter)}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`
 
 
     return this.httpClient.post<T>(url,body,{headers:requestParameter.headers})
@@ -63,7 +63,7 @@ export class HttpclientService {
     url = requestParameter.fullEndPoint;
   else
 
-    url = `${this.url(requestParameter)}`;
+  url = `${this.url(requestParameter)}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`;
     return this.httpClient.put<T>(url,body,{headers:requestParameter.headers});
   }
 
@@ -76,7 +76,7 @@ export class HttpclientService {
     url = requestParameter.fullEndPoint;
   else
 
-    url = `${this.url(requestParameter)}/${id}`;
+  url = `${this.url(requestParameter)}/${id}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`;
     return this.httpClient.delete<T>(url,{headers:requestParameter.headers});
   }
 
@@ -86,7 +86,8 @@ export class HttpclientService {
 export class RequestParameters {
   controller?: string;
   action?: string;
-  headers: HttpHeaders;
+  queryString?:string;
+  headers?: HttpHeaders;
   baseUrl?: string;
   fullEndPoint?: string;//Uygulama bambaska bir api uzerinden istek gonderecekse bunu kullanacagiz.Dis dunyada farkli servislere istek gonderebilmek amac.
 }

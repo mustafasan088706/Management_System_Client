@@ -1,4 +1,4 @@
-import { Component, NgProbeToken, OnInit } from '@angular/core';
+import { Component, EventEmitter, NgProbeToken, OnInit, Output } from '@angular/core';
 import { validateBasis } from '@angular/flex-layout';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -43,12 +43,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
 
   }
 
-  parseDate(expiryDate: string): Date {
-    if (expiryDate) {
-        return new Date(expiryDate);
-    }
-    return null;
-}
+  @Output() createdProduct:EventEmitter<Products>=new EventEmitter();
 
   create(productname: HTMLInputElement, productcode: HTMLInputElement, materialname: HTMLInputElement, materialcode: HTMLInputElement, conductancemax: HTMLInputElement,conductancemin: HTMLInputElement, weight: HTMLInputElement, carbondioxide: HTMLInputElement, nitrogen: HTMLInputElement, lotnumber: HTMLInputElement,productimage:HTMLInputElement,notes:HTMLInputElement) {
 
@@ -221,11 +216,12 @@ export class CreateComponent extends BaseComponent implements OnInit {
 
       this.productService.create(product,()=>{
         this.hideSpinner(SpinnerType.BallClipRotate);
-        this.alertify.message("Succesfuly added!",{
+        this.alertify.message(" Product succesfuly added ",{
           dissmissOther:true,
           messageType:MessageType.Success,
           position:MessagePosition.TopRight,
-        })
+        });
+        this.createdProduct.emit(product)
        
       },errorMessage=>{
         this.alertify.message(errorMessage,{

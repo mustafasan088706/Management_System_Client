@@ -4,6 +4,7 @@ import { HttpclientService } from '../httpclient.service';
 import { Products } from 'src/Contracts/contracts';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductLists } from 'src/Contracts/product-lists';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,15 +35,24 @@ export class ProductService {
    
   }
 
- async read(successCallBack?:()=>void,errorCallBack?:(errorMessage:string)=>void):Promise<ProductLists[]>{
-    const promiseData :Promise<ProductLists[]>= this.httpClient.get<ProductLists[]>({
-      controller:"dummytest"
+ async read(page:number=0,size:number=5,successCallBack?:()=>void,errorCallBack?:(errorMessage:string)=>void):Promise<{totalCount:number;products:ProductLists[]}>{
+    const promiseData :Promise<{totalCount:number;products:ProductLists[]}>= this.httpClient.get<{totalCount:number;products:ProductLists[]}>({
+      controller:"dummytest",
+      queryString:`page=${page}&size=${size}`
     }).toPromise();
 
     promiseData.then(d=>successCallBack())
     .catch((errorResponse:HttpErrorResponse)=>errorCallBack(errorResponse.message))
 
     return await promiseData;
+  }
+
+ async delete(id:string){
+     const deleteObs= this.httpClient.delete<any>({
+        controller:"dummytest"
+      },id)
+
+      await firstValueFrom(deleteObs);
   }
 
 

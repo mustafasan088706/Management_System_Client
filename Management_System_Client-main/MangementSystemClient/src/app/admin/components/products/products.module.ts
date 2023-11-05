@@ -18,6 +18,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ListComponent } from './list/list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
     ProductsComponent,
     CreateComponent,
     ListComponent,
+    DeleteDirective
 
   ],
   imports: [

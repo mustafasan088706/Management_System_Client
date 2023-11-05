@@ -40,7 +40,7 @@ export class ProductsComponent  implements OnInit {
   openDialogTwo() {
     this.dialog.open(ListComponent, {
       width: "100%",
-      height: "100%",
+      height: "90%",
 
     });
 
