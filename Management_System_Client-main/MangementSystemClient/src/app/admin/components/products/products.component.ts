@@ -16,14 +16,20 @@ import { ListComponent } from './list/list.component';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent  implements OnInit {
+export class ProductsComponent extends BaseComponent  implements OnInit {
 
-  constructor( private dialog: MatDialog) {
+  constructor( private dialog: MatDialog,
+     spinner:NgxSpinnerService) {super(spinner)
   
   }
 
 
   ngOnInit(): void {
+    this.showSpinner(SpinnerType.BallClipRotate);
+
+    setTimeout(() => {
+      this.hideSpinner(SpinnerType.BallClipRotate)
+    },1000);
   }
 
 

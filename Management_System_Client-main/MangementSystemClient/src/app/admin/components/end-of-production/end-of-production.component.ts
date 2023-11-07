@@ -15,5 +15,8 @@ export class EndOfProductionComponent extends BaseComponent implements OnInit{
   }
   ngOnInit(): void {
 this.showSpinner(SpinnerType.BallClipRotate)
+setTimeout(() => {
+  this.hideSpinner(SpinnerType.BallClipRotate)
+},1000);
   }
 }

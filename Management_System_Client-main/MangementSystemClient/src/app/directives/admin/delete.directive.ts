@@ -42,11 +42,12 @@ export class DeleteDirective {
      @HostListener("click")
      async onclick(){
       this.openDialog(async()=>{
+       
         this.spinner.show(SpinnerType.BallClipRotate);
         const td:HTMLTableCellElement=this.element.nativeElement;
       this.httpClientService.delete({
         controller:this.controller
-
+          
       },this.id).subscribe(data=>{
         $(td.parentElement).animate({
           opacity:0,
@@ -80,7 +81,7 @@ export class DeleteDirective {
      openDialog(afterClosed:any): void {
       const dialogRef = this.dialog.open(DeleteDialogComponent, {
         data: DeleteState.Yes,
-      
+          width:"400px"
       });
   
       dialogRef.afterClosed().subscribe(result => {

@@ -72,6 +72,10 @@ export class DashboardComponent extends BaseComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.showSpinner(SpinnerType.BallClipRotate);
 
+    setTimeout(() => {
+      this.hideSpinner(SpinnerType.BallClipRotate)
+    },1000);
+
   }
 
 }

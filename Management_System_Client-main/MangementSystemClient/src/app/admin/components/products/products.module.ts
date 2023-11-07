@@ -21,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
+import { FileuploadModule } from 'src/app/services/common/fileupload/fileupload.module';
+import { FileuploadComponent } from 'src/app/services/common/fileupload/fileupload.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
     CreateComponent,
     ListComponent,
     DeleteDirective,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+
 
   ],
   imports: [
@@ -52,7 +55,8 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
     MatCheckboxModule,
     MatPaginatorModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    FileuploadModule
     
   ]
 })
