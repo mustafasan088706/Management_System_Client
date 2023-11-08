@@ -7,6 +7,7 @@ import { Products } from 'src/Contracts/contracts';
 import { AlertifyOptions, AlertifyService, MessagePosition, MessageType } from 'src/app/services/adminservices/alertify.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { fileUploadOptions } from 'src/app/services/common/fileupload/fileupload.component';
 
 @Component({
   selector: 'app-create',
@@ -48,6 +49,13 @@ export class CreateComponent extends BaseComponent implements OnInit {
   }
 
   @Output() createdProduct: EventEmitter<Products> = new EventEmitter();
+  @Output() fileUploadOptions:Partial<fileUploadOptions>={
+    action:"upload",
+    controller:"dummytest",
+    explanation:"Please select your files here.You can drag and drop files...",
+    IsAdminPage:true,
+    accept:".png , .jpg , .jpeg , .json"
+  }
 
   create(productname: HTMLInputElement, productcode: HTMLInputElement, materialname: HTMLInputElement, materialcode: HTMLInputElement, conductancemax: HTMLInputElement, conductancemin: HTMLInputElement, weight: HTMLInputElement, carbondioxide: HTMLInputElement, nitrogen: HTMLInputElement, lotnumber: HTMLInputElement, productimage: HTMLInputElement, notes: HTMLInputElement) {
 

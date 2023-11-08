@@ -1,8 +1,8 @@
 <div class="center" style="margin-left: 80px;">
-    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="selectedFiles($event)" >
+    <ngx-file-drop dropZoneLabel="Drop files here" [accept]="options.accept" (onFileDrop)="selectedFiles($event)" >
    
         <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-          Please select your files here.
+          {{options.explanation}}
           <button type="button" (click)="openFileSelector()">Browse Files</button>
         </ng-template>
     </ngx-file-drop>
