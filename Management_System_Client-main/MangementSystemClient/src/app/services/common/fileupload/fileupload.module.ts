@@ -18,7 +18,7 @@ import { DialogModule } from '../../../dialogs/dialog.module';
   imports: [
     CommonModule,
     NgxFileDropModule,
-    DialogModule
+    // DialogModule
 
 
   ], exports: [FileuploadComponent]
