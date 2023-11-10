@@ -1,0 +1,8 @@
+<h1 mat-dialog-title style="text-align: center;font-weight: bold; color: red;letter-spacing: 3px;">Warning!</h1>
+<div mat-dialog-content>
+  <p style="text-align: center;">Are you sure adding a file?</p>
+    
+<div mat-dialog-actions style="margin-left: 85px;">
+  <button mat-button (click)="close()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

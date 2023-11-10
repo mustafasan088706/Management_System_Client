@@ -11,7 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { UiModule } from './ui/ui.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule } from '@angular/material/dialog';
+
+
 
 
 
@@ -21,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
+
   
 
 
@@ -37,7 +39,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ToastrModule.forRoot(),
     NgxSpinnerModule,
     HttpClientModule,
-    MatDialogModule,
+
 
 
   ],

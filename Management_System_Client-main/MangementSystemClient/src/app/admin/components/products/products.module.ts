@@ -19,10 +19,9 @@ import { ListComponent } from './list/list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
-import { MatDialogModule } from '@angular/material/dialog';
-import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
 import { FileuploadModule } from 'src/app/services/common/fileupload/fileupload.module';
-import { FileuploadComponent } from 'src/app/services/common/fileupload/fileupload.component';
+import { DialogModule } from '../../../dialogs/dialog.module';
+
 
 
 @NgModule({
@@ -31,7 +30,7 @@ import { FileuploadComponent } from 'src/app/services/common/fileupload/fileuplo
     CreateComponent,
     ListComponent,
     DeleteDirective,
-    DeleteDialogComponent,
+  
 
 
   ],
@@ -55,8 +54,8 @@ import { FileuploadComponent } from 'src/app/services/common/fileupload/fileuplo
     MatCheckboxModule,
     MatPaginatorModule,
     MatTableModule,
-    MatDialogModule,
-    FileuploadModule
+    FileuploadModule,
+    DialogModule
     
   ]
 })

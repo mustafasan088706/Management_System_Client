@@ -5,6 +5,8 @@ import { HttpclientService } from '../httpclient.service';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { AlertifyService, MessagePosition, MessageType } from '../../adminservices/alertify.service';
 import { MessageTypeToastr, PositionType, ToastrServiceCustom } from '../../uiservices/toastr.service.custom';
+import { MatDialog } from '@angular/material/dialog';
+import { FileUploadDialogComponent, FileUploadDialogState } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 
 
 @Component({
@@ -16,9 +18,10 @@ export class FileuploadComponent {
 
   constructor(
     private httpClientService: HttpclientService,
-    private alertifyService:AlertifyService,
-    private toastr:ToastrServiceCustom
-    ) { }
+    private alertifyService: AlertifyService,
+    private toastr: ToastrServiceCustom,
+    private dialog: MatDialog
+  ) { }
   public files: NgxFileDropEntry[];
 
   @Input() options: Partial<fileUploadOptions>
@@ -34,44 +37,63 @@ export class FileuploadComponent {
         fileData.append(_file.name, _file, file.relativePath)
       });
     }
-    this.httpClientService.post({
-      controller: this.options.controller,
-      action: this.options.action,
-      queryString: this.options.queryString,
-      headers: new HttpHeaders({ "responseType": "blob" })
-    }, fileData).subscribe(data => {
 
-      const message:string="Files succesfuly added";
+    this.openDialog(() => {
+      this.httpClientService.post({
+        controller: this.options.controller,
+        action: this.options.action,
+        queryString: this.options.queryString,
+        headers: new HttpHeaders({ "responseType": "blob" })
+      }, fileData).subscribe(data => {
 
-      if (this.options.IsAdminPage) {
-          this.alertifyService.message(message,{
-            dissmissOther:true,
-            messageType:MessageType.Success,
-            position:MessagePosition.BottomRight
+        const message: string = "Files succesfuly added";
+
+        if (this.options.IsAdminPage) {
+          this.alertifyService.message(message, {
+            dissmissOther: true,
+            messageType: MessageType.Success,
+            position: MessagePosition.BottomRight
           })
-      } else {
-        this.toastr.message(message,"Succesfuly",{
-          messageType:MessageTypeToastr.Success,
-          position:PositionType.BottomRight
-        })
-      }
-    }, (errorResponse: HttpErrorResponse) => {
-
-      const message:string="Files cannot added.Unexpected error occured";
-
-      if (this.options.IsAdminPage) {
-          this.alertifyService.message(message,{
-            dissmissOther:true,
-            messageType:MessageType.Error,
-            position:MessagePosition.BottomRight
+        } else {
+          this.toastr.message(message, "Succesfuly", {
+            messageType: MessageTypeToastr.Success,
+            position: PositionType.BottomRight
           })
-      } else {
-        this.toastr.message(message,"Succesfuly",{
-          messageType:MessageTypeToastr.Error,
-          position:PositionType.BottomRight
-        })
-      }
+        }
+      }, (errorResponse: HttpErrorResponse) => {
+
+        const message: string = "Files cannot added.Unexpected error occured";
+
+        if (this.options.IsAdminPage) {
+          this.alertifyService.message(message, {
+            dissmissOther: true,
+            messageType: MessageType.Error,
+            position: MessagePosition.BottomRight
+          })
+        } else {
+          this.toastr.message(message, "Succesfuly", {
+            messageType: MessageTypeToastr.Error,
+            position: PositionType.BottomRight
+          })
+        }
+      })
     })
+
+
+
+  }
+
+  openDialog(afterClosed: any): void {
+    const dialogRef = this.dialog.open(FileUploadDialogComponent, {
+      data: FileUploadDialogState.Yes,
+      width: "400px"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == FileUploadDialogState.Yes) {
+        afterClosed();
+      }
+    });
   }
 }
 
@@ -84,3 +106,6 @@ export class fileUploadOptions {
   accept?: string;
   IsAdminPage?: boolean = false;
 }
+
+
+
